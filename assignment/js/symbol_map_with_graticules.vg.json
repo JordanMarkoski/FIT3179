@@ -7,38 +7,31 @@
     "layer": [
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+          "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/js/ne_110m_admin_0_countries.topojson",
           "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
         },
         "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
       },
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+          "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/js/WorldMapWithGraticules.topojson",
           "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
         },
         "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
       },
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/data/earthquake.csv"
+          "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
         },
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
-          "longitude": {"field": "longitude", "type": "quantitative"},
-          "latitude": {"field": "latitude", "type": "quantitative"},
-          "size": {
-            "field": "mag",
-            "type": "quantitative",
-            "title": "Magnitude (Richter scale)",
-            "scale": {"domain": [4, 8]}
-          },
-          "color": {
-            "field": "depth",
-            "type": "quantitative",
-            "title": "Depth in km",
-            "scale": {"scheme": "reds"}
-          }
+          "longitude": {"field": "Long", "type": "quantitative"},
+          "latitude": {"field": "Lat", "type": "quantitative"},
+          "tooltip": [
+            {"field": "operator", "type": "nominal"},
+            {"field": "date", "type": "nominal"},
+            {"field": "all_aboard", "type": "quantitative", "title": "number of people"}
+          ]
         }
       }
     ]
