@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 450,
+    "title": "Map of Historic Plane Crash Sites Since 1908",
+    "projection": {"type": "equalEarth"},
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/js/ne_110m_admin_0_countries.topojson",
+          "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/js/WorldMapWithGraticules.topojson",
+          "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
+        },
+        "mark": 
+        {
+          "type": "circle", 
+          "tooltip": {"content": "data"}
+        },
+
+        "encoding": {
+          "longitude": {"field": "Long", "type": "quantitative"},
+          "latitude": {"field": "Lat", "type": "quantitative"},
+          "size":
+          {
+            "field": "all_fatalities",
+            "type": "quantitative",
+            "title": "Number of Fatalities",
+            "legend": {"orient": "top-left"},
+            "scale": 
+            {
+              "type": "bin-ordinal",
+              "zero": false
+            }
+          },
+          "tooltip": [
+            {"field": "date", "type": "nominal", "title": "Date"},
+            {"field": "Location", "type": "nominal"},
+            {"field": "operator", "type": "nominal","title": "Operator"},
+            {"field": "all_aboard", "type": "quantitative", "title": "number of people"},
+            {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
+            {"field": "ac_type", "type": "nominal", "title": "Type of Aircraft"}
+          ]
+        }
+      }
+    ]
+  }
