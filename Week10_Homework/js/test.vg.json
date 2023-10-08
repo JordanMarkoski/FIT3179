@@ -2,11 +2,32 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": { "text": "Line Graph Template" },
     "data": {
-        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/1_Intro/section1/data/city_daily_cost.csv"
+        "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
     },
-    "mark": "bar",
-    "encoding": {
-        "y": { "field": "city", "type": "nominal" },
-        "x": { "field": "daily_cost", "type": "quantitative" }
-    }
-}
+    "vconcat": [
+    {
+        "width": 480,
+        "height": 240,
+        "mark": "line",
+        "encoding": {
+            "x": {"field": "date", "type": "temporal", "axis":
+            {"title": "Date"}},
+            "y": {"field": "all_fatalities", "type": "quantitative"}
+        }
+    },
+        {
+        "width": 480,
+        "height": 60,
+        "mark": "area",
+        "encoding": {
+            "x": {"field": "date", "type": "temporal"},
+            "y": {
+            "field": "all_fatalities",
+            "type": "quantitative",
+            "axis": {"tickCount": 3, "grid": false}
+                }
+        }
+        }
+    ]
+
+
