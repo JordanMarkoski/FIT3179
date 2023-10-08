@@ -8,7 +8,7 @@
     {
         "width": 480,
         "height": 240,
-        "mark": "area",
+        "mark": "line",
         "encoding": {
             "x": 
                 {"field": "date", 
@@ -23,7 +23,8 @@
         {
         "width": 480,
         "height": 60,
-        "mark": "area",
+        "mark": "line",
+        "title": "Use this chart to filter above data",
         "params": [
         {"name": "brush", "select": {"type": "interval",
         "encodings": ["x"]}}
