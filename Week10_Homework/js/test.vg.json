@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Line Graph Template" },
+    "title": { "text": "Airplane Crash Fatalities" },
     "data": {
         "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
     },
@@ -8,7 +8,7 @@
     {
         "width": 480,
         "height": 240,
-        "mark": "line",
+        "mark": "area",
         "encoding": {
             "x": 
                 {"field": "date", 
@@ -16,24 +16,25 @@
                 "scale": {"domain": {"param": "brush"}}, 
                 "axis":
                 {"title": "Date"}},
-            "y": {"field": "all_fatalities", "type": "quantitative"}
+            "y": {"field": "all_fatalities", "type": "quantitative",
+             "axis": {"title": "Fatalities"}}
         }
     },
         {
         "width": 480,
         "height": 60,
-        "mark": "line",
+        "mark": "area",
         "params": [
         {"name": "brush", "select": {"type": "interval",
         "encodings": ["x"]}}
 ],
 
         "encoding": {
-            "x": {"field": "date", "type": "temporal"},
+            "x": {"field": "date", "type": "temporal", "axis": {"title": "Date"}},
             "y": {
             "field": "all_fatalities",
             "type": "quantitative",
-            "axis": {"tickCount": 3, "grid": false}
+            "axis": {"title": "Fatalities","tickCount": 3, "grid": false}
                 }
         }
         }
