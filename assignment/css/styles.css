@@ -1,8 +1,41 @@
+/* styles.css */
+
+body {
+    background-color: beige;
+}
+
+.page {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
 #symbol_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+    top: 100px;
+    bottom: 100px;
+    left: 100px;
+    right: 100px;
+    background-color: beige; /* Beige background color added */
+    /* height: 1000px;
+    width: 800px; */
+}
+
+.vis-container {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.graph-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.graph-container .graph {
+    width: 48%;
+}
+
+.history-text {
+    width: 70%; /* Adjust the width as needed to move the text over more to the right */
 }
