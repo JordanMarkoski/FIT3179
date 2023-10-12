@@ -1,19 +1,37 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A simple pie chart with embedded data.",
+  "description": "Pie chart showing the relative percentages of dead passengers and crew in airplane crashes.",
   "data": {
-    "values": [
-      {"category": 1, "value": 4},
-      {"category": 2, "value": 6},
-      {"category": 3, "value": 10},
-      {"category": 4, "value": 3},
-      {"category": 5, "value": 7},
-      {"category": 6, "value": 8}
-    ]
+    "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
   },
+  "transform": [
+    {
+      "aggregate": [{
+        "op": "sum",
+        "field": "passenger_fatalities",
+        "as": "Passenger"
+      },
+      {
+        "op": "sum",
+        "field": "crew_fatalities",
+        "as": "Crew"
+      }
+    ]},
+    {"fold": ["Passenger", "Crew"], "as": ["Fatalities", "value"]}
+  ],
   "mark": "arc",
   "encoding": {
-    "theta": {"field": "value", "type": "quantitative"},
-    "color": {"field": "category", "type": "nominal"}
+    "theta": {
+      "field": "value",
+      "type": "quantitative"},
+    "color": {
+      "field": "Fatalities",
+      "type": "nominal",
+      "scale": {"range": ["#1f77b4", "#ff7f0e"]}
+    },
+    "tooltip": [
+      {"field": "category", "title": "Category"},
+      {"field": "percentage", "title": "Percentage", "format": ".2f"}
+    ]
   }
 }
