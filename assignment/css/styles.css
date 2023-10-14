@@ -1,41 +1,38 @@
-/* styles.css */
-
-body {
-    background-color: beige;
+.vis-container {
+    width: 100%;
 }
 
 .page {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 20px;
+    width: 1024px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 10px;
     font-family: 'Open Sans', sans-serif;
 }
 
-#symbol_map {
-    top: 100px;
-    bottom: 100px;
-    left: 100px;
-    right: 100px;
-    background-color: beige; /* Beige background color added */
-    /* height: 1000px;
-    width: 800px; */
+p {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.vis-container {
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    padding: 10px;
+.description-right {
+    padding-left: 20px;
+    background-color: white;
 }
 
-.graph-container {
-    display: flex;
-    justify-content: space-between;
+.description-left {
+    padding-right: 20px;
+    background-color: white;
 }
 
-.graph-container .graph {
-    width: 48%;
+h1 {
+    font-family: 'Courier Prime';
 }
 
-.history-text {
-    width: 70%; /* Adjust the width as needed to move the text over more to the right */
+h2 {
+    font-family: 'Courier Prime';
+}
+
+h3 {
+    font-family: 'Courier Prime';
 }
