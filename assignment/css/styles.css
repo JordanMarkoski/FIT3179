@@ -4,7 +4,7 @@
 
 .page {
     width: 1024px;
-    background-color: beige;
+    background-color: white;
     margin: auto;
     padding: 50px;
     padding-top: 10px;
@@ -17,12 +17,12 @@ p {
 
 .description-right {
     padding-left: 20px;
-    background-color: beige;
+    background-color: white;
 }
 
 .description-left {
     padding-right: 20px;
-    background-color: beige;
+    background-color: white;
 }
 
 h1 {
