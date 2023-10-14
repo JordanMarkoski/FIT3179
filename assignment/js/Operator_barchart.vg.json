@@ -15,6 +15,6 @@
   "encoding": {
     "x": {"field": "operator", "type": "nominal", "title": "Operator"},
     "y": {"field": "TotalFatalities", "type": "quantitative", "title": "Total Fatalities"},
-    "color": {"value": "steelblue"}
+    "color": {"value": "orange"}
   }
 }
