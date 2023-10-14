@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
+  },
+   "transform": [
+    {
+      "aggregate": [{
+        "op": "sum",
+        "field": "all_fatalities",
+        "as": "allFatality"
+      },
+      {
+        "op": "sum",
+        "field": "all_aboard",
+        "as": "allAboard"
+      }
+    ]},
+    {"calculate": "datum.allFatality / datum.allAboard", "as": "FatalityProportion"},
+    {"fold": ["allAboard", "allFatality"], "as": ["Fatalities", "value"]}
+  ],
+  "width": 245,
+  "height": 250,
+  "title": "All Fatalities Proportion",
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 50},
+      "encoding": {
+        "theta": {"field": "value", "type": "quantitative"},
+        "color": {
+          "field": "Fatalities",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["orange", "lightgrey"]}
+        },
+        "order": {"field": "FatalityProportion", "type": "quantitative", "sort": "descending"}
+      }
+    },
+    {
+      "mark": {"type": "text"},
+      "encoding": {
+        "text": {"field": "FatalityProportion", "type": "quantitative", "format": ".1%"}
+      }
+    }
+  ]
+}
