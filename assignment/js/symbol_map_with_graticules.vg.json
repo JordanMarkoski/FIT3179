@@ -5,7 +5,7 @@
     },
     "vconcat": [
       {
-        "width": 800,
+        "width": 700,
         "height": 275,
         "title": "Map of Historic Plane Crash Sites Since 1908",
         "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
@@ -64,7 +64,7 @@
         ]
       },
       {
-        "width": 800,
+        "width": 700,
         "height": 100,
         "mark": {"type": "line", "strokeWidth": 0.5},
         "title": "Use this line chart to filter out the data based on time",
@@ -86,7 +86,62 @@
             "title": "Number of Crashes"
           }
         }
+      },
+      {
+        "width": 700,
+        "height": 240,
+        "transform": [
+          {"filter": {"param": "time_brush"}},
+          {"calculate": "datum.crew_fatalities", "as": "Crew"},
+          {"calculate": "datum.passenger_fatalities", "as": "Passenger"},
+          {"calculate": "datum.ground", "as": "Ground"},
+          {
+            "fold": ["Crew", "Passenger", "Ground"],
+            "as": ["Fatality Type", "num_fatalities"]
+          }
+        ],
+        "mark": "bar",
+        "encoding": {
+          "x": {
+            "field": "date", 
+            "type": "temporal",
+            "scale": {"domain": {"param": "time_brush"}}, 
+            "title": "Date"
+          },
+          "y": {
+            "field": "num_fatalities", 
+            "type": "quantitative",
+            "title": "Fatalities"
+          },
+          "color": {
+            "field": "Fatality Type"
+          }
+        }
+      },
+      {
+        "width": 700,
+        "height": 240,
+        "transform": [
+          {
+            "sort": [{"field": "date"}],
+            "window": [{"op": "sum", "field": "all_fatalities", "as": "Cumulative Fatalities"}]
+          }
+        ],
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "date", 
+            "type": "temporal",
+            "scale": {"domain": {"param": "time_brush"}}, 
+            "title": "Date"
+          },
+          "y": {
+            "field": "Cumulative Fatalities", 
+            "type": "quantitative"
+          }
+        }
       }
     ],
+    "resolve": {"scale": {"color": "independent"}},
     "config": {"title": {"font": "sans-serif", "fontSize": 14}}
   }
