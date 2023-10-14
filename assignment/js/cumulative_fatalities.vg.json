@@ -1,0 +1,20 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
+  },
+  "transform": [
+    {"filter": "datum.all_fatalities > 0"}, 
+    {"aggregate": [{"op": "sum", "field": "all_fatalities", "as": "TotalFatalities"}],
+    "groupby": ["operator"]
+    },
+    {"window": [{"op": "row_number", "as": "rank"}], "sort": [{"field": "TotalFatalities", "order": "descending"}]},
+    {"filter": "datum.rank <= 20"}  
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "operator", "type": "nominal", "title": "Operator"},
+    "y": {"field": "TotalFatalities", "type": "quantitative", "title": "Total Fatalities"},
+    "color": {"value": "orange"}
+  }
+}
