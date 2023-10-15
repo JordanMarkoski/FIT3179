@@ -3,21 +3,29 @@
   "data": {
     "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
   },
-   "transform": [
+  "transform": [
     {
-      "aggregate": [{
-        "op": "sum",
-        "field": "crew_fatalities",
-        "as": "crewFatality"
-      },
-      {
-        "op": "sum",
-        "field": "crew_aboard",
-        "as": "crewAboard"
-      }
-    ]},
-    {"calculate": "datum.crewFatality / datum.crewAboard", "as": "FatalityProportion"},
-    {"fold": ["crewAboard", "crewFatality"], "as": ["Fatalities", "value"]}
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "crew_fatalities",
+          "as": "crewFatality"
+        },
+        {
+          "op": "sum",
+          "field": "crew_aboard",
+          "as": "crewAboard"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.crewFatality / datum.crewAboard",
+      "as": "FatalityProportion"
+    },
+    {
+      "fold": ["crewAboard", "crewFatality"],
+      "as": ["Fatalities", "value"]
+    }
   ],
   "width": 245,
   "height": 250,
@@ -33,7 +41,12 @@
           "legend": null,
           "scale": {"range": ["orange", "lightgrey"]}
         },
-        "order": {"field": "FatalityProportion", "type": "quantitative", "sort": "descending"}
+        "order": {"field": "FatalityProportion", "type": "quantitative", "sort": "descending"},
+        "tooltip": [
+          {"field": "crewFatality", "title": "Crew Fatalities"},
+          {"field": "crewAboard", "title": "Crew Aboard"},
+          {"field": "FatalityProportion", "title": "Proportion", "format": ".1%"}
+        ]
       }
     },
     {
