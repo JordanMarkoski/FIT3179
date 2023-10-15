@@ -15,6 +15,6 @@
   "encoding": {
     "x": {"field": "ac_type", "type": "nominal", "title": "Aircraft Type"},
     "y": {"field": "TotalFatalities", "type": "quantitative", "title": "Total Fatalities"},
-    "color": {"value": "orange"}
+    "color": {"value": "#ADD8E6"}
   }
 }
