@@ -17,7 +17,7 @@
             "type": "point",
             "fields": ["Year"]
           },
-          "bind": {"input": "range", "min": 1909, "max": 2021, "step": 1, "name": "Select a decade  "}
+          "bind": {"input": "range", "min": 1909, "max": 2021, "step": 1, "name": "Select a Year  "}
         }
       ],
       "mark": "point",
