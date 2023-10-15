@@ -84,7 +84,8 @@
             "aggregate": "count",
             "axis": {"tickCount": 3, "grid": false},
             "title": "Number of Crashes"
-          }
+          },
+          "color": {"value": "#ADD8E6"}
         }
       },
       {
@@ -148,7 +149,8 @@
           "y": {
             "field": "Cumulative Fatalities", 
             "type": "quantitative"
-          }
+          },
+          "color": {"value": "#ADD8E6"}
         }
       }
     ],
