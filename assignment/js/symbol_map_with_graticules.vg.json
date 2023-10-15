@@ -5,7 +5,7 @@
     },
     "vconcat": [
       {
-        "width": 800,
+        "width": 700,
         "height": 275,
         "title": "Map of Historic Plane Crash Sites Since 1908",
         "projection": {"type": "equalEarth", "rotate": [-150, 0, 0]},
@@ -51,12 +51,12 @@
             }
           },
               "tooltip": [
+                {"field": "date", "type": "nominal", "title": "Date"},
                 {"field": "Location", "type": "nominal"},
                 {"field": "operator", "type": "nominal","title": "Operator"},
                 {"field": "all_aboard", "type": "quantitative", "title": "number of people"},
                 {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
-                {"field": "ac_type", "type": "nominal", "title": "Type of Aircraft"},
-                {"field": "summary", "type": "ordinal", "title": "Summary"}
+                {"field": "ac_type", "type": "nominal", "title": "Type of Aircraft"}
               ]
             },
             "mark": {"type": "circle", "opacity": 0.5, "size": 50}
@@ -64,7 +64,7 @@
         ]
       },
       {
-        "width": 800,
+        "width": 700,
         "height": 100,
         "mark": {"type": "line", "strokeWidth": 0.5},
         "title": "Use this line chart to filter out the data based on time",
@@ -88,8 +88,9 @@
         }
       },
       {
-        "width": 800,
+        "width": 700,
         "height": 240,
+        "title": "Fatalities Over Time (Ground Fatalities Included)",
         "transform": [
           {"filter": {"param": "time_brush"}},
           {"calculate": "datum.crew_fatalities", "as": "Crew"},
@@ -119,8 +120,9 @@
         }
       },
       {
-        "width": 800,
+        "width": 700,
         "height": 240,
+        "title": "Cumulative Plane Crash Fatalities",
         "transform": [
           {
             "sort": [{"field": "date"}],
