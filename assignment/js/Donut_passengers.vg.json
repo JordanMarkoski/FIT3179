@@ -33,7 +33,13 @@
           "legend": null,
           "scale": {"range": ["orange", "lightgrey"]}
         },
-        "order": {"field": "FatalityProportion", "type": "quantitative", "sort": "descending"}
+        "order": {"field": "FatalityProportion", "type": "quantitative", "sort": "descending"},
+         "tooltip": [
+          {"field": "passengerFatality", "title": "Passenger Fatalities"},
+          {"field": "passengerAboard", "title": "Passenger Aboard"},
+          {"field": "FatalityProportion", "title": "Proportion", "format": ".1%"}
+        ]
+
       }
     },
     {
