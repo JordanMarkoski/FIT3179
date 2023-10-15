@@ -6,7 +6,7 @@
   "hconcat": [
     {
       "transform": [
-        {"calculate": "year(datum.date)","as": "Year"},
+        {"calculate": "year(datum.date)", "as": "Year"},
         {"filter": {"param": "date_param"}}
       ],
       "params": [
@@ -25,11 +25,12 @@
         "y": {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
         "x": {"field": "date", "aggregate": "count", "title": "Number of Crashes"}
       },
+      "title": "Filtered by Year",
       "config": {"title": {"font": "sans-serif", "fontSize": 14}}
     },
     {
       "transform": [
-        {"calculate": "year(datum.date)","as": "Year"}
+        {"calculate": "year(datum.date)", "as": "Year"}
       ],
       "params": [
         {
@@ -46,6 +47,7 @@
         "y": {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
         "x": {"field": "date", "aggregate": "count", "title": "Number of Crashes"}
       },
+      "title": "Full History of Crashes",
       "config": {"title": {"font": "sans-serif", "fontSize": 14}}
     }
   ]
