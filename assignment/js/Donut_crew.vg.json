@@ -39,7 +39,7 @@
           "field": "Fatalities",
           "type": "nominal",
           "legend": null,
-          "scale": {"range": ["orange", "lightgrey"]}
+          "scale": {"range": ["#ADD8E6", "lightgrey"]}
         },
         "order": {"field": "FatalityProportion", "type": "quantitative", "sort": "descending"},
         "tooltip": [
