@@ -46,7 +46,7 @@
       "encoding": {
         "y": {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
         "x": {"field": "date", "aggregate": "count", "title": "Number of Crashes"},
-        "color": {"value": "#ADD8E6"}  // Specify the color here
+        "color": {"value": "#ADD8E6"}
       },
       "config": {"title": {"font": "sans-serif", "fontSize": 14}}
     }
