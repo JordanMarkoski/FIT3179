@@ -1,27 +1,52 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JordanMarkoski/FIT3179/main/assignment/data/Airplane_crashes_dataset_since_1908_cleaned.csv"
+  },
+  "hconcat": [
+    {
+      "transform": [
+        {"calculate": "year(datum.date)","as": "Year"},
+        {"filter": {"param": "date_param"}}
+      ],
+      "params": [
+        {
+          "name": "date_param",
+          "value": 2000,
+          "select": {
+            "type": "point",
+            "fields": ["Year"]
+          },
+          "bind": {"input": "range", "min": 1909, "max": 2021, "step": 1, "name": "Select a decade  "}
+        }
+      ],
+      "mark": "point",
+      "encoding": {
+        "y": {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
+        "x": {"field": "date", "aggregate": "count", "title": "Number of Crashes"}
+      },
+      "config": {"title": {"font": "sans-serif", "fontSize": 14}}
     },
-    "transform": [
-      {"calculate": "year(datum.date)","as": "Year"},
-      {"filter": {"param": "date_param"}}
-    ],
-    "params": [
-      {
-        "name": "date_param",
-        "value": 2000,
-        "select": {
-          "type": "point",
-          "fields": ["Year"]
-        },
-        "bind": {"input": "range", "min": 1920, "max": 2020, "step": 10, "name": "Select a decade  "}
-      }
-    ],    
-    "mark": "point",
-    "encoding":{
-      "y": {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
-      "x": {"field": "date", "aggregate": "count", "title": "Number of Crashes"}
-    },
-    "config": {"title": {"font": "sans-serif", "fontSize": 14}}
-  }
+    {
+      "transform": [
+        {"calculate": "year(datum.date)","as": "Year"}
+      ],
+      "params": [
+        {
+          "name": "Date",
+          "value": 2021,
+          "select": {
+            "type": "point",
+            "fields": ["Year"]
+          }
+        }
+      ],
+      "mark": "point",
+      "encoding": {
+        "y": {"field": "all_fatalities", "type": "quantitative", "title": "Number of Fatalities"},
+        "x": {"field": "date", "aggregate": "count", "title": "Number of Crashes"}
+      },
+      "config": {"title": {"font": "sans-serif", "fontSize": 14}}
+    }
+  ]
+}
